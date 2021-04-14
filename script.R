@@ -222,15 +222,24 @@ df_sub_imputed$Sandwiches <- 0
 df_sub_imputed <- df_sub_imputed %>%
   mutate(
     categories = as.character(categories),
-    American_Traditional = ifelse(grepl('American', categories), 1, 0),
-    Nightlife = ifelse(grepl('Nightlife', categories), 1, 0),
-    Bars = ifelse(grepl('Bars', categories), 1, 0),
-    Coffee_Tea = ifelse(grepl('Coffee', categories), 1, 0),
-    Cafes = ifelse(grepl('Cafes', categories), 1, 0),
-    Southern = ifelse(grepl('Southern', categories), 1, 0),
-    Breakfast_Brunch = ifelse(grepl('Breakfast', categories), 1, 0),
-    Fast_Food = ifelse(grepl('Fast', categories), 1, 0),
-    Sandwiches = ifelse(grepl('Sandwhiches', categories), 1, 0)
+    American_Traditional = ifelse(grepl('American', categories), "True", "False"),
+    American_Traditional = as.factor(American_Traditional),
+    Nightlife = ifelse(grepl('Nightlife', categories), "True", "False"),
+    Nightlife = as.factor(Nightlife),
+    Bars = ifelse(grepl('Bars', categories), "True", "False"),
+    Bars = as.factor(Bars),
+    Coffee_Tea = ifelse(grepl('Coffee', categories), "True", "False"),
+    Coffee_Tea = as.factor(Coffee_Tea),
+    Cafes = ifelse(grepl('Cafes', categories), "True", "False"),
+    Cafes = as.factor(Cafes),
+    Southern = ifelse(grepl('Southern', categories), "True", "False"),
+    Southern = as.factor(Southern),
+    Breakfast_Brunch = ifelse(grepl('Breakfast', categories), "True", "False"),
+    Breakfast_Brunch = as.factor(Breakfast_Brunch),
+    Fast_Food = ifelse(grepl('Fast', categories), "True", "False"),
+    Fast_Food = as.factor(Fast_Food),
+    Sandwiches = ifelse(grepl('Sandwhiches', categories), "True", "False"),
+    Sandwiches = as.factor(Sandwiches)
   )
 # 2.) Merge zip-code data (Michiel)
 # Income, Population size, Number of restaurants per zip code
