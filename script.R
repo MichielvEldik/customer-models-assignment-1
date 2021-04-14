@@ -197,6 +197,17 @@ write.csv(df_sub_imputed, file="data_sub_imputed.csv")
 # This is easier than rerunning the entire thing
 df_sub_imputed <- read.csv('data_sub_imputed.csv')
 
+
+
+
+
+
+
+# Price Range description: Suspect by Roeflof: Indicator of how expensive a restaurant is. (Remember 1 dollar sign or 5 dollar sign)
+
+# Processing
+
+# 1.) Seperate the category feature in individual dummies (Michiel)
 # Add empty columns
 df_sub_imputed$American_Traditional <- 0
 df_sub_imputed$Nightlife <- 0
@@ -207,8 +218,6 @@ df_sub_imputed$Southern <- 0
 df_sub_imputed$Breakfast_Brunch <- 0
 df_sub_imputed$Fast_Food<- 0
 df_sub_imputed$Sandwiches <- 0
-
-
 # Fill up with dummy variables
 df_sub_imputed <- df_sub_imputed %>%
   mutate(
@@ -222,18 +231,7 @@ df_sub_imputed <- df_sub_imputed %>%
     Breakfast_Brunch = ifelse(grepl('Breakfast', categories), 1, 0),
     Fast_Food = ifelse(grepl('Fast', categories), 1, 0),
     Sandwiches = ifelse(grepl('Sandwhiches', categories), 1, 0)
-    )
-
-
-
-
-
-# Price Range description: Suspect by Roeflof: Indicator of how expensive a restaurant is. (Remember 1 dollar sign or 5 dollar sign)
-
-# Processing
-
-# 1.) Seperate the category feature in individual dummies (Michiel)
-
+  )
 # 2.) Merge zip-code data (Michiel)
 # Income, Population size, Number of restaurants per zip code
 
