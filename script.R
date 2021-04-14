@@ -238,6 +238,25 @@ df_sub_imputed <- df_sub_imputed %>%
 # Income, Population size, Number of restaurants per zip code
 
 # 3.) Outlier analysis on the numeric features (Till)
+review_count_histogram <- ggplot(data = df_sub_imputed, aes(review_count))+
+  geom_histogram(bins = 50,
+                 binwidth = sqrt(nrow(df_sub_imputed)))
+
+review_count_boxplot <- ggplot(data = df_sub_imputed, aes(x = "", y = review_count))+
+  geom_boxplot()
+
+qqnorm(df_sub_imputed$review_count, pch = 1, frame = FALSE)
+qqline(df_sub_imputed$review_count, col = "steelblue", lwd = 2)
+
+# Extract outliers based on IQR (< | > 1.5IQR -> outlier)
+review_count_outlier <- boxplot.stats(df_sub_imputed$review_count)$out
+review_count_outlier <- which(df_sub_imputed$review_count %in% c(review_count_outlier))
+df_outlier_subset <- df_sub_imputed[review_count_outlier,]
+
+# create a dummy variable in df_sub_imputed that indicates if the review count is an outlier
+df_sub_imputed$outlier_review_count <- ifelse(df_sub_imputed$review_count %in% df_outlier_subset$review_count, 1, 0)
+
+# Note: To estimate the impact of outliers in residuals (and their normal distribution) we first have to estimate the models
 
 # 4.) Plots
 # Plot Restaurants divided into categories on US map (pyPlot for)
