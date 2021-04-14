@@ -1,5 +1,5 @@
 ## Customer Models - Assignment 1 --
-
+print("hello")
 # load packages
 packages <- c("dplyr", "ggplot2", "tidyr", "lubridate", "mice", "VIM")
 install.packages(packages)
