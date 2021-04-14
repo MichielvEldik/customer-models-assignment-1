@@ -1,5 +1,5 @@
 ## Customer Models - Assignment 1 --
-print("hello")
+print("GitHub Test Pull test")
 # load packages
 packages <- c("dplyr", "ggplot2", "tidyr", "lubridate", "mice", "VIM")
 install.packages(packages)
@@ -32,6 +32,7 @@ count_columns_with_missing <- function(dataframe) {
   number_columns_with_missing = sum(ifelse(sapply(dataframe, FUN = function(x) {sum(is.na(x))}) > 0,1,0))
   return(number_columns_with_missing)
 }
+
 
 # --------------------------------------------- # 
 
@@ -188,3 +189,61 @@ describe_columns(df_sub_imputed)
 
 # save imputed dataset in wd
 write.csv(df_sub_imputed, file="data_sub_imputed.csv")
+
+# ---------------- # 
+# Dummy categories #
+# ---------------- #
+
+# This is easier than rerunning the entire thing
+df_sub_imputed <- read.csv('data_sub_imputed.csv')
+
+# Add empty columns
+df_sub_imputed$American_Traditional <- 0
+df_sub_imputed$Nightlife <- 0
+df_sub_imputed$Bars <- 0
+df_sub_imputed$Coffee_Tea <- 0
+df_sub_imputed$Cafes <- 0
+df_sub_imputed$Southern <- 0
+df_sub_imputed$Breakfast_Brunch <- 0
+df_sub_imputed$Fast_Food<- 0
+df_sub_imputed$Sandwiches <- 0
+
+
+# Fill up with dummy variables
+df_sub_imputed <- df_sub_imputed %>%
+  mutate(
+    categories = as.character(categories),
+    American_Traditional = ifelse(grepl('American', categories), 1, 0),
+    Nightlife = ifelse(grepl('Nightlife', categories), 1, 0),
+    Bars = ifelse(grepl('Bars', categories), 1, 0),
+    Coffee_Tea = ifelse(grepl('Coffee', categories), 1, 0),
+    Cafes = ifelse(grepl('Cafes', categories), 1, 0),
+    Southern = ifelse(grepl('Southern', categories), 1, 0),
+    Breakfast_Brunch = ifelse(grepl('Breakfast', categories), 1, 0),
+    Fast_Food = ifelse(grepl('Fast', categories), 1, 0),
+    Sandwiches = ifelse(grepl('Sandwhiches', categories), 1, 0)
+    )
+
+
+
+
+
+# Price Range description: Suspect by Roeflof: Indicator of how expensive a restaurant is. (Remember 1 dollar sign or 5 dollar sign)
+
+# Processing
+
+# 1.) Seperate the category feature in individual dummies (Michiel)
+
+# 2.) Merge zip-code data (Michiel)
+# Income, Population size, Number of restaurants per zip code
+
+# 3.) Outlier analysis on the numeric features (Till)
+
+# 4.) Plots
+# Plot Restaurants divided into categories on US map (pyPlot for)
+# DV(checkin100, stars, review_count) ~ Feature of interest (e.g. category, parking options, good for X feature) (Jesse)
+
+# 5.) Literature (Jeroen)
+
+
+
