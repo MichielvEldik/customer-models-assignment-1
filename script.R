@@ -1,5 +1,5 @@
 ## Customer Models - Assignment 1 --
-print("hello")
+print("GitHub Test Pull test")
 # load packages
 packages <- c("dplyr", "ggplot2", "tidyr", "lubridate", "mice", "VIM")
 install.packages(packages)
@@ -32,6 +32,7 @@ count_columns_with_missing <- function(dataframe) {
   number_columns_with_missing = sum(ifelse(sapply(dataframe, FUN = function(x) {sum(is.na(x))}) > 0,1,0))
   return(number_columns_with_missing)
 }
+
 
 # --------------------------------------------- # 
 
@@ -189,5 +190,22 @@ describe_columns(df_sub_imputed)
 # save imputed dataset in wd
 write.csv(df_sub_imputed, file="data_sub_imputed.csv")
 
+
+# Price Range description: Suspect by Roeflof: Indicator of how expensive a restaurant is. (Remember 1 dollar sign or 5 dollar sign)
+
+# Processing
+
+# 1.) Seperate the category feature in individual dummies (Michiel)
+
+# 2.) Merge zip-code data (Michiel)
+# Income, Population size, Number of restaurants per zip code
+
+# 3.) Outlier analysis on the numeric features (Till)
+
+# 4.) Plots
+# Plot Restaurants divided into categories on US map (pyPlot for)
+# DV(checkin100, stars, review_count) ~ Feature of interest (e.g. category, parking options, good for X feature) (Jesse)
+
+# 5.) Literature (Jeroen)
 
 
