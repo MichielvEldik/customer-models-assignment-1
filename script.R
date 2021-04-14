@@ -188,6 +188,3 @@ describe_columns(df_sub_imputed)
 
 # save imputed dataset in wd
 write.csv(df_sub_imputed, file="data_sub_imputed.csv")
-
-
-
