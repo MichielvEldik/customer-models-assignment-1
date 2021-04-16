@@ -10,6 +10,9 @@ library(lubridate)
 library(mice)
 library(VIM)
 
+print("Hello, World.")
+
+
 # setwd
 set.seed(123)
 setwd("D:/GitHub_Repository_Collection/Customer Models Assignments/customer-models-assignment-1")
